@@ -1,32 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./Header.module.css";
 import AddTask from "./AddTask";
 import Button from "./UI/Button";
+import Clock from "./Clock";
+import Input from "./UI/Input";
 
 const Header = () => {
-  const newDate = new Date();
-  const year = newDate.getFullYear();
 
   return (
     <div className={classes.headercontainer}>
-      <h1>
-        {newDate.getDate()}.
-        {newDate.getMonth() < 10
-          ? `0${newDate.getMonth()}`
-          : `${newDate.getMonth()}`}
-        .{year}
-      </h1>
-      <h1>{newDate.getHours()}:{newDate.getUTCMinutes()}</h1>
+      <Clock />
+
       <div className={classes.menu}>
-        <input type="text" />
+        <h3>Find task</h3>
+        <Input type={"text"} />
         <Button>Search</Button>
         <br />
-        Date:
         <ul>
           <li>Today</li>
           <li>Upcoming</li>
         </ul>
-        Priority:
+        <h3>Add task</h3>
+        Priority
         <ul>
           <li>None</li>
           <li>Low</li>
