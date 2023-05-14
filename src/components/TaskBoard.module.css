@@ -1,0 +1,14 @@
+.maincontainer{
+    background-color: white;
+    width: 1650px;
+    margin-left: 270px;
+    margin-top: 10%;
+    display:inline-flex;
+    height: 100%;
+}
+
+.board{
+    background-color: white;
+    height: 500px;
+    display: flex;
+}

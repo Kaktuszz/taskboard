@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css'
 import Header from './components/Header'
+import TaskBoard from './components/TaskBoard'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <Header />
-      <h1>My world</h1>
+      <TaskBoard />
     </>
   )
 }
