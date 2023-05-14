@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classes from "./Header.module.css";
 import AddTask from "./AddTask";
 import Button from "./UI/Button";
