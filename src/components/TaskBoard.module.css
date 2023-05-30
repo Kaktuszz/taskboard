@@ -7,8 +7,18 @@
     height: 100%;
 }
 
+.maincontainer h4{
+    margin-bottom: 0px;
+}
+
 .board{
     background-color: white;
     height: 500px;
     display: flex;
+}
+
+.month{
+    color: rgb(82, 82, 82);
+    font-style:oblique;
+    margin-bottom: 10px;
 }

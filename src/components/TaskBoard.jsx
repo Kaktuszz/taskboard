@@ -4,7 +4,6 @@ import CalendarBox from "./CalendarBox";
 import TaskCont from "./TaskCont";
 
 const TaskBoard = () => {
-  const today = new Date();
   const weekdays = [
     "Sunday",
     "Monday",
@@ -13,6 +12,21 @@ const TaskBoard = () => {
     "Thursday",
     "Friday",
     "Saturday",
+  ];
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   const [tasks, setTask] = useState([]);
@@ -46,12 +60,12 @@ const TaskBoard = () => {
   const getDaysInMonth = (year, month) => {
     return new Date(year, month, 0).getDate();
   };
-  
+
   const date = new Date();
   const currYear = date.getFullYear();
   const currMonth = date.getMonth() + 1;
   const daysInCurrMonth = getDaysInMonth(currYear, currMonth);
-  
+
   return (
     <div className={classes.maincontainer}>
       <div className={classes.board}>
@@ -62,7 +76,8 @@ const TaskBoard = () => {
             date.getDate() + index
           );
           const day = today.getDay();
-  
+          const month = today.getMonth();
+
           const filteredTasks = tasks.filter(
             (task) =>
               task.gate ===
@@ -76,7 +91,7 @@ const TaskBoard = () => {
                   : `${today.getDate()}`
               }`
           );
-  // counting calendar id
+          // counting calendar id
           const calendarBoxId =
             today.getDate() <= daysInCurrMonth
               ? `${today.getFullYear()}${
@@ -97,7 +112,7 @@ const TaskBoard = () => {
                     ? `0${today.getDate() - daysInCurrMonth}`
                     : `${today.getDate() - daysInCurrMonth}`
                 }`;
-  
+
           return (
             <CalendarBox key={index} id={calendarBoxId}>
               <h4>
@@ -106,6 +121,7 @@ const TaskBoard = () => {
                   today.getDate() < 10 ? `0${today.getDate()}` : today.getDate()
                 }`}
               </h4>
+              <div className={classes.month}>{months[month]}</div>
               {filteredTasks.map((task) => (
                 <TaskCont
                   taskname={task.taskName}
