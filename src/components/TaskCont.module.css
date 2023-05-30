@@ -1,0 +1,25 @@
+.cont{
+    height: auto;
+    text-align: left;
+    border-radius: 5px;
+    margin: 0px 10px 10px 10px;
+    padding: 10px;
+    word-break: break-all
+}
+
+.cont.non{
+    background-color: rgb(124, 124, 124);
+}
+
+.cont.low{
+    background-color: rgba(0, 190, 25, 0.596);
+}
+
+.cont.med{
+    background-color: rgb(252, 145, 46);
+}
+
+
+.cont.hig{
+    background-color: rgba(204, 19, 19, 0.61);
+}

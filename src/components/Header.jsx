@@ -22,12 +22,6 @@ const Header = () => {
         </ul>
         <h3>Add task</h3>
         Priority
-        <ul>
-          <li>None</li>
-          <li>Low</li>
-          <li>Medium</li>
-          <li>High</li>
-        </ul>
       </div>
       <AddTask />
     </div>

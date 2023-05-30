@@ -1,0 +1,54 @@
+.form ul{
+    /* display: inline-block; */
+    margin: 3px;
+    padding: 0px;
+}
+
+.form li{
+    display: inline-block;
+    /* padding: 10px; */
+    border: 1px;
+    border-style: none solid;
+    transition: 0.3s;
+}
+
+.buttons{
+    background-color: transparent;
+    padding: 10px;
+    margin: 3px;
+    font-size: 13px;
+    border: none;
+}
+
+
+.non:hover{
+    background-color: rgb(170, 170, 170);
+}
+
+.low:hover{
+    background-color: rgba(0, 190, 25, 0.596);
+}
+
+.med:hover{
+    background-color: rgb(252, 145, 46);
+}
+
+.hig:hover{
+    background-color: rgba(204, 19, 19, 0.61);
+}
+
+.non.selected{
+    background-color: rgb(170, 170, 170);
+}
+
+.low.selected{
+    background-color: rgba(0, 190, 25, 0.596);
+}
+
+.med.selected{
+    background-color: rgb(252, 145, 46);
+}
+
+.hig.selected{
+    background-color: rgba(204, 19, 19, 0.61);
+}
