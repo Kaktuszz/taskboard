@@ -36,22 +36,33 @@ const TaskBoard = () => {
     console.log({ loadedTasks, responseData });
     setTask(loadedTasks);
   };
-  
+
   useEffect(() => {
     fetchTask();
   }, []);
 
+  // create custom hook
+
+  const getDaysInMonth = (year, month) => {
+    return new Date(year, month, 0).getDate();
+  };
+  
+  const date = new Date();
+  const currYear = date.getFullYear();
+  const currMonth = date.getMonth() + 1;
+  const daysInCurrMonth = getDaysInMonth(currYear, currMonth);
+  
   return (
     <div className={classes.maincontainer}>
       <div className={classes.board}>
         {[...Array(7)].map((_, index) => {
-          const date = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            today.getDate() + index
+          const today = new Date(
+            currYear,
+            currMonth - 1,
+            date.getDate() + index
           );
-          const day = date.getDay();
-
+          const day = today.getDay();
+  
           const filteredTasks = tasks.filter(
             (task) =>
               task.gate ===
@@ -60,29 +71,39 @@ const TaskBoard = () => {
                   ? `0${today.getMonth() + 1}`
                   : `${today.getMonth() + 1}`
               }${
-                today.getDate() + index < 10
-                  ? `0${today.getDate() + index}`
-                  : `${today.getDate() + index}`
+                today.getDate() < 10
+                  ? `0${today.getDate()}`
+                  : `${today.getDate()}`
               }`
           );
-
+  // counting calendar id
+          const calendarBoxId =
+            today.getDate() <= daysInCurrMonth
+              ? `${today.getFullYear()}${
+                  today.getMonth() + 1 < 10
+                    ? `0${today.getMonth() + 1}`
+                    : `${today.getMonth() + 1}`
+                }${
+                  today.getDate() < 10
+                    ? `0${today.getDate()}`
+                    : `${today.getDate()}`
+                }`
+              : `${today.getFullYear()}${
+                  today.getMonth() + 2 < 10
+                    ? `0${today.getMonth() + 2}`
+                    : `${today.getMonth() + 2}`
+                }${
+                  today.getDate() - daysInCurrMonth < 10
+                    ? `0${today.getDate() - daysInCurrMonth}`
+                    : `${today.getDate() - daysInCurrMonth}`
+                }`;
+  
           return (
-            <CalendarBox
-              key={index}
-              id={`${today.getFullYear()}${
-                today.getMonth() + 1 < 10
-                  ? `0${today.getMonth() + 1}`
-                  : `${today.getMonth() + 1}`
-              }${
-                today.getDate() + index < 10
-                  ? `0${today.getDate() + index}`
-                  : `${today.getDate() + index}`
-              }`}
-            >
+            <CalendarBox key={index} id={calendarBoxId}>
               <h4>
                 {weekdays[day]}{" "}
                 {`${
-                  date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
+                  today.getDate() < 10 ? `0${today.getDate()}` : today.getDate()
                 }`}
               </h4>
               {filteredTasks.map((task) => (
