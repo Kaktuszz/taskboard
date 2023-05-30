@@ -35,11 +35,27 @@
     transition: 0.3s;
 }
 
-.menu li:hover{
+/* .menu li:hover{
     background-color: aqua;
-}
+} */
 
 .filter{
     height: 75px;
     background-color: antiquewhite;
 }
+
+/* .non:hover{
+    background-color: rgb(170, 170, 170);
+}
+
+.low:hover{
+    background-color: rgba(0, 190, 25, 0.596);
+}
+
+.med:hover{
+    background-color: rgb(252, 145, 46);
+}
+
+.hig:hover{
+    background-color: rgba(204, 19, 19, 0.61);
+} */
