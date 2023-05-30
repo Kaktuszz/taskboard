@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./UI/Button";
 import Input from "./UI/Input";
 import classes from "./AddTask.module.css";
@@ -55,13 +55,13 @@ const AddTask = () => {
       <ul>
         <li
           className={`${classes.non} ${
-            priority === "none" ? `${classes.selected}` : ""
+            priority === "non" ? `${classes.selected}` : ""
           }`}
         >
           <button
             type="button"
             className={classes.buttons}
-            value="none"
+            value="non"
             onClick={priorityHandler}
           >
             None
