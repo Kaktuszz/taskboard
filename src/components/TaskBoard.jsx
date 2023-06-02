@@ -3,7 +3,8 @@ import classes from "./TaskBoard.module.css";
 import CalendarBox from "./CalendarBox";
 import TaskCont from "./TaskCont";
 
-const TaskBoard = () => {
+const TaskBoard = (props) => {
+  // weekdays and months constants
   const weekdays = [
     "Sunday",
     "Monday",
@@ -29,47 +30,54 @@ const TaskBoard = () => {
     "December",
   ];
 
-  const [tasks, setTask] = useState([]);
+// old function that was migrated to App.jsx
 
-  const fetchTask = async () => {
-    const response = await fetch(
-      "https://react-project8-53a24-default-rtdb.europe-west1.firebasedatabase.app/act_tasks.json"
-    );
-    const responseData = await response.json();
-    const loadedTasks = [];
+  // const [tasks, setTask] = useState([]);
 
-    for (const key in responseData) {
-      loadedTasks.push({
-        id: key,
-        taskName: responseData[key].taskName,
-        gate: responseData[key].gate,
-        taskPriority: responseData[key].taskPriority,
-        result: responseData[key].result,
-      });
-    }
-    console.log({ loadedTasks, responseData });
-    setTask(loadedTasks);
-  };
+  // const fetchTask = async () => {
+  //   const response = await fetch(
+  //     "https://react-project8-53a24-default-rtdb.europe-west1.firebasedatabase.app/act_tasks.json"
+  //   );
+  //   const responseData = await response.json();
+  //   const loadedTasks = [];
+
+  //   for (const key in responseData) {
+  //     loadedTasks.push({
+  //       id: key,
+  //       taskName: responseData[key].taskName,
+  //       gate: responseData[key].gate,
+  //       taskPriority: responseData[key].taskPriority,
+  //       result: responseData[key].result,
+  //     });
+  //   }
+  //   // fix function loop
+  //   // fix function loop
+  //   // fix function loop
+  //   // fix function loop
+  //   console.log({ loadedTasks, responseData });
+  //   setTask(loadedTasks);
+  // };
 
   useEffect(() => {
-    fetchTask();
+    props.fetchTask();
   }, []);
 
   // create custom hook
 
+
   const getDaysInMonth = (year, month) => {
     return new Date(year, month, 0).getDate();
   };
-
+  // date constants
   const date = new Date();
   const currYear = date.getFullYear();
   const currMonth = date.getMonth() + 1;
   const daysInCurrMonth = getDaysInMonth(currYear, currMonth);
 
   return (
-    <div className={classes.maincontainer}>
+    <div className={props.daysShow > 14 ? classes.maincontainer : classes.wild_main_container}>
       <div className={classes.board}>
-        {[...Array(7)].map((_, index) => {
+        {[...Array(props.daysShow)].map((_, index) => {
           const today = new Date(
             currYear,
             currMonth - 1,
@@ -77,8 +85,8 @@ const TaskBoard = () => {
           );
           const day = today.getDay();
           const month = today.getMonth();
-
-          const filteredTasks = tasks.filter(
+            // filter for tasks (search a day, compare day and "gate")
+          const filteredTasks = props.tasks.filter(
             (task) =>
               task.gate ===
               `${today.getFullYear()}${
@@ -91,7 +99,7 @@ const TaskBoard = () => {
                   : `${today.getDate()}`
               }`
           );
-          // counting calendar id
+          // counting calendar id with validation
           const calendarBoxId =
             today.getDate() <= daysInCurrMonth
               ? `${today.getFullYear()}${
@@ -114,7 +122,7 @@ const TaskBoard = () => {
                 }`;
 
           return (
-            <CalendarBox key={index} id={calendarBoxId}>
+            <CalendarBox key={index} id={calendarBoxId} daysShow={props.daysShow}>
               <h4>
                 {weekdays[day]}{" "}
                 {`${
@@ -123,6 +131,7 @@ const TaskBoard = () => {
               </h4>
               <div className={classes.month}>{months[month]}</div>
               {filteredTasks.map((task) => (
+                // Container for tasks
                 <TaskCont
                   taskname={task.taskName}
                   key={task.id}
@@ -130,7 +139,8 @@ const TaskBoard = () => {
                   taskPriority={task.taskPriority}
                   gate={task.gate}
                   result={task.result}
-                  onFetch={() => fetchTask()}
+                  // fetch function
+                  onFetch={props.fetchTask}
                 />
               ))}
             </CalendarBox>

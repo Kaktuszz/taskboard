@@ -1,6 +1,75 @@
-.box{
-    background-color: rgb(187, 187, 187);
-    height: 480px;
-    width: 215px;
-    margin: 10px;
+.wildbox {
+  background-color: rgb(187, 187, 187);
+  height: 620px;
+  width: 215px;
+  margin: 10px;
+  overflow: auto;
+}
+
+.wildbox::-webkit-scrollbar {
+  width: 1px;
+}
+
+.wildbox::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.wildbox::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.wildbox::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* // */
+
+.mid_box {
+  background-color: rgb(187, 187, 187);
+  height: 300px;
+  width: 215px;
+  margin: 10px;
+  overflow: auto;
+}
+
+.mid_box::-webkit-scrollbar {
+  width: 1px;
+}
+
+.mid_box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.mid_box::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.mid_box::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* // */
+
+.box {
+  background-color: rgb(187, 187, 187);
+  height: 181px;
+  width: 215px;
+  margin: 10px;
+  overflow: auto;
+}
+
+.box::-webkit-scrollbar {
+  width: 1px;
+}
+
+.box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.box::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.box::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

@@ -1,10 +1,11 @@
 .cont{
+    position: relative;
     height: auto;
     text-align: left;
     border-radius: 5px;
-    margin: 0px 10px 10px 10px;
+    margin: 0px 7px 7px 7px;
     padding: 10px;
-    word-break: break-all
+    overflow-wrap: break-word;
 }
 
 .cont.non{
@@ -22,4 +23,22 @@
 
 .cont.hig{
     background-color: rgba(204, 19, 19, 0.61);
+}
+
+.del{
+    background-color: rgb(255, 35, 35);
+}
+
+.butt button{
+    background-color: transparent;
+    border: 2px solid red;
+    /* border: none; */
+    font-size: 10px;
+    padding: 1px, 1px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: 0.5s;
+}
+
+.butt button:hover{
+   background-color: red;
 }
