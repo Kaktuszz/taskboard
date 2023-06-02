@@ -5,7 +5,7 @@ const Button =(props)=>{
     if(props.link){
         return <a href={props.link}><button className={classes.buttonstyle}>{props.children}</button></a>
     }
-    return <button onClick={props.func} className={classes.buttonstyle}>{props.children}</button>
+    return <button onClick={props.func} className={classes.buttonstyle} value={props.value}>{props.children}</button>
 }
 
 

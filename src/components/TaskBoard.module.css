@@ -2,19 +2,32 @@
     background-color: white;
     width: 1650px;
     margin-left: 270px;
-    margin-top: 10%;
-    display:inline-flex;
-    height: 100%;
+    /* margin-top: 10%; */
+    display: inline-flex;
+    height: auto;
 }
 
-.maincontainer h4{
+.wild_main_container{
+    background-color: white;
+    width: 1650px;
+    margin-left: 270px;
+    margin-top: 10%;
+    display: inline-flex;
+    height: auto;
+}
+
+.wild_main_container h4, .maincontainer h4{
     margin-bottom: 0px;
 }
 
 .board{
     background-color: white;
-    height: 500px;
-    display: flex;
+    /* height: 500px; */
+    height: 100%;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    
 }
 
 .month{

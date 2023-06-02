@@ -1,42 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "./UI/Button";
 import Input from "./UI/Input";
 import classes from "./AddTask.module.css";
 import database from "./firebase.js";
 
-const AddTask = () => {
+const AddTask = (props) => {
   //Додати useReducer!!
-
+ // states for task data
   const [priority, setPriority] = useState("");
   const [taskName, setTaskName] = useState("");
   const [dateTask, setDayTask] = useState("");
   const [formatDate, setFormatDate] = useState("");
   //Додати useReducer!!
-  const [taskList, setTaskList] = useState([]);
 
+  // task adder
   const addTaskHandler = async (event) => {
     event.preventDefault();
-    const taskData = {
-      id: Math.random().toString(),
+    console.log({
       gate: formatDate,
       taskName: taskName,
       taskPriority: priority,
-    };
-    setTaskList([...taskList, taskData]);
-    console.log(taskData);
-    await database.ref("act_tasks").push({
-      id: taskData.id,
-      gate: taskData.gate,
-      taskName: taskData.taskName,
-      taskPriority: taskData.taskPriority,
       result: false,
     });
-
+    // here task goes to DB
+    await database.ref("act_tasks").push({
+      id: Math.random().toString(),
+      gate: formatDate,
+      taskName: taskName,
+      taskPriority: priority === "" ? "non" : priority,
+      result: false,
+    });
+// clear inputs and renew tasks on screen
+    await props.onFetch();
     setPriority("");
     setDayTask("");
     setTaskName("");
   };
 
+  // handlers for task data
   const priorityHandler = (e) => {
     setPriority(e.target.value);
   };
@@ -46,6 +47,7 @@ const AddTask = () => {
   };
 
   const dateHandler = (e) => {
+    // formate date for "gate" value
     setFormatDate(e.target.value.split("-").join(""));
     setDayTask(e.target.value);
   };
