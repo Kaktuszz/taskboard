@@ -29,6 +29,14 @@
     background-color: rgb(255, 35, 35);
 }
 
+.edi{
+    background-color: rgba(219, 171, 38, 0.952);
+}
+
+.edi input{
+    width: 95%;
+}
+
 .butt button{
     background-color: transparent;
     border: 2px solid red;
