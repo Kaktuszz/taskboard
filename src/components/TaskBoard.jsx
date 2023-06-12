@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./TaskBoard.module.css";
 import CalendarBox from "./CalendarBox";
 import TaskCont from "./TaskCont";
+import { auth } from "./firebase";
 
 const TaskBoard = (props) => {
   // weekdays and months constants
@@ -67,7 +68,7 @@ const TaskBoard = (props) => {
                 today.getDate() < 10
                   ? `0${today.getDate()}`
                   : `${today.getDate()}`
-              }`
+              }` && task.author.id === auth.currentUser.uid
           );
           // counting calendar id with validation
           const calendarBoxId =

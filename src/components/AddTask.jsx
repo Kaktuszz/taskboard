@@ -2,17 +2,36 @@ import React, { useState } from "react";
 import Button from "./UI/Button";
 import Input from "./UI/Input";
 import classes from "./AddTask.module.css";
-import database from "./firebase.js";
+import { auth, database } from "./firebase.js";
+// import { addDoc, collection } from "firebase/firestore";
 
 const AddTask = (props) => {
   //Додати useReducer!!
- // states for task data
+  // states for task data
   const [priority, setPriority] = useState("");
   const [taskName, setTaskName] = useState("");
   const [dateTask, setDayTask] = useState("");
   const [formatDate, setFormatDate] = useState("");
   //Додати useReducer!!
 
+  // firestore adder
+  const tasksCollection = database.collection("tasks");
+  const createTask = async (event) => {
+    event.preventDefault();
+    await tasksCollection.add({
+      id: Math.random().toString(),
+      gate: formatDate,
+      taskName: taskName,
+      taskPriority: priority === "" ? "non" : priority,
+      result: false,
+      author: {name: auth.currentUser.displayName, id: auth.currentUser.uid}
+    });
+    console.log(auth.currentUser.displayName);
+    await props.onFetch();
+    setPriority("");
+    setDayTask("");
+    setTaskName("");
+  };
   // task adder
   const addTaskHandler = async (event) => {
     event.preventDefault();
@@ -30,7 +49,7 @@ const AddTask = (props) => {
       taskPriority: priority === "" ? "non" : priority,
       result: false,
     });
-// clear inputs and renew tasks on screen
+    // clear inputs and renew tasks on screen
     await props.onFetch();
     setPriority("");
     setDayTask("");
@@ -53,7 +72,7 @@ const AddTask = (props) => {
   };
 
   return (
-    <form className={classes.form} onSubmit={addTaskHandler}>
+    <form className={classes.form} onSubmit={createTask}>
       <ul>
         <li
           className={`${classes.non} ${

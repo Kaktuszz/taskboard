@@ -4,8 +4,16 @@ import AddTask from "./AddTask";
 import Button from "./UI/Button";
 import Clock from "./Clock";
 import Input from "./UI/Input";
+import "firebase/auth"
+import { auth } from "./firebase";
 
 const Header = (props) => {
+  const signOut =()=>{
+    auth.signOut().then(()=>{
+      localStorage.setItem("isAuth", false);
+      props.setIsAuth(false);
+    })
+  }
   return (
     <div className={classes.headercontainer}>
       <Clock />
@@ -27,6 +35,7 @@ const Header = (props) => {
       <Button func={() => props.callback(7)}>7 Days</Button>
       <Button func={() => props.callback(14)}>14 Days</Button>
       <Button func={() => props.callback(30)}>30 Days</Button>
+      <Button func={signOut}>Logout</Button>
     </div>
   );
 };
