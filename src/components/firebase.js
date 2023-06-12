@@ -1,16 +1,25 @@
 import firebase from 'firebase';
+import 'firebase/firestore';
+import 'firebase/auth';
+
   
 const firebaseConfig = {
-    apiKey: "AIzaSyDzCDBz575Ztr_DHdyI3P6S_i5fFWgtF_o",
-    authDomain: "react-project8-53a24.firebaseapp.com",
-    databaseURL: "https://react-project8-53a24-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "react-project8-53a24",
-    storageBucket: "react-project8-53a24.appspot.com",
-    messagingSenderId: "861833486386",
-    appId: "1:861833486386:web:3ba31ab769c3aff8e31c2b"
+  apiKey: "AIzaSyCuy5afcimnOLigmay4H-F3_9ZGBmTuFJI",
+  authDomain: "task-board-prj.firebaseapp.com",
+  projectId: "task-board-prj",
+  storageBucket: "task-board-prj.appspot.com",
+  messagingSenderId: "618415838308",
+  appId: "1:618415838308:web:f8ae13745ed9c77572fb71",
+  measurementId: "G-0V6FYT1XMP"
   };
-    
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
-  
-export default database;
+
+const app = firebase.initializeApp(firebaseConfig);
+
+export const auth = firebase.auth(app);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const database = firebase.firestore();
+
+// export const analytics = getAnalytics(app);
+
+
+

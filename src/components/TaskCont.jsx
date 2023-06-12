@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classes from "./TaskCont.module.css";
-import database from "./firebase";
+import { database } from "./firebase";
+import "firebase/firestore";
 import Button from "./UI/Button";
 
 const TaskCont = (props) => {
@@ -16,19 +17,17 @@ const TaskCont = (props) => {
     )}-${props.gate.slice(6, 8)}`,
     taskPriority: props.taskPriority,
   });
+
+  const tasksCollection = database.collection("tasks").doc(props.id);
   // function that set checkbox checked or unchecked
   const checkBoxSubmit = async () => {
     setCheckBox((prevCheck) => !prevCheck);
-    await database.ref("act_tasks/" + props.id).update({ result: !checkBox });
+    await tasksCollection.update({ result: !checkBox });
     props.onFetch();
   };
   // function that remove task
   const deleteTask = async () => {
-    await database
-      .ref("act_tasks/" + props.id)
-      .remove()
-      .catch(alert);
-
+    await tasksCollection.delete();
     props.onFetch();
   };
   // function for editing window
@@ -54,7 +53,7 @@ const TaskCont = (props) => {
   // function for editing task
 
   const editTask = async () => {
-    await database.ref("act_tasks/" + props.id).update({
+    await tasksCollection.update({
       taskName: editTaskData.taskName,
       gate: editTaskData.gate.split("-").join(""),
       taskPriority: editTaskData.taskPriority,
@@ -98,7 +97,11 @@ const TaskCont = (props) => {
               onChange={editTaskHandler}
             />
             Priority:{" "}
-            <select value={editTaskData.taskPriority} name="taskPriority" onChange={editTaskHandler}>
+            <select
+              value={editTaskData.taskPriority}
+              name="taskPriority"
+              onChange={editTaskHandler}
+            >
               <option value="non">None</option>
               <option value="low">Low</option>
               <option value="med">Medium</option>
