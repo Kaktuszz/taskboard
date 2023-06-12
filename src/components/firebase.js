@@ -20,6 +20,7 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const database = firebase.firestore();
 
 // export const analytics = getAnalytics(app);
+// b
 
 
 
