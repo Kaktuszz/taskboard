@@ -30,39 +30,9 @@ const TaskBoard = (props) => {
     "December",
   ];
 
-// old function that was migrated to App.jsx
-
-  // const [tasks, setTask] = useState([]);
-
-  // const fetchTask = async () => {
-  //   const response = await fetch(
-  //     "https://react-project8-53a24-default-rtdb.europe-west1.firebasedatabase.app/act_tasks.json"
-  //   );
-  //   const responseData = await response.json();
-  //   const loadedTasks = [];
-
-  //   for (const key in responseData) {
-  //     loadedTasks.push({
-  //       id: key,
-  //       taskName: responseData[key].taskName,
-  //       gate: responseData[key].gate,
-  //       taskPriority: responseData[key].taskPriority,
-  //       result: responseData[key].result,
-  //     });
-  //   }
-  //   // fix function loop
-  //   // fix function loop
-  //   // fix function loop
-  //   // fix function loop
-  //   console.log({ loadedTasks, responseData });
-  //   setTask(loadedTasks);
-  // };
-
   useEffect(() => {
     props.fetchTask();
   }, []);
-
-  // create custom hook
 
 
   const getDaysInMonth = (year, month) => {

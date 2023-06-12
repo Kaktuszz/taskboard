@@ -10,10 +10,7 @@ const TaskCont = (props) => {
   const [editBox, setEditBox] = useState(false);
   const [editTaskData, setEditTask] = useState({
     taskName: props.taskname,
-    gate: `${props.gate.slice(0, 4)}-${props.gate.slice(
-      4,
-      6
-    )}-${props.gate.slice(6, 8)}`,
+    gate: `${props.gate.slice(0, 4)}-${props.gate.slice(4,6)}-${props.gate.slice(6, 8)}`,
     taskPriority: props.taskPriority,
   });
   // function that set checkbox checked or unchecked
@@ -37,10 +34,7 @@ const TaskCont = (props) => {
     setEditBox((prevstate) => !prevstate);
     setEditTask({
       taskName: props.taskname,
-      gate: `${props.gate.slice(0, 4)}-${props.gate.slice(
-        4,
-        6
-      )}-${props.gate.slice(6, 8)}`,
+      gate: `${props.gate.slice(0, 4)}-${props.gate.slice(4,6)}-${props.gate.slice(6, 8)}`,
       taskPriority: props.taskPriority,
     });
   };
@@ -98,7 +92,11 @@ const TaskCont = (props) => {
               onChange={editTaskHandler}
             />
             Priority:{" "}
-            <select value={editTaskData.taskPriority} name="taskPriority" onChange={editTaskHandler}>
+            <select
+              value={editTaskData.taskPriority}
+              name="taskPriority"
+              onChange={editTaskHandler}
+            >
               <option value="non">None</option>
               <option value="low">Low</option>
               <option value="med">Medium</option>
