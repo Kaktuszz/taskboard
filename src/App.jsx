@@ -26,12 +26,22 @@ function App() {
     console.log(response.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
-  // useEffect(()=>{
-  //   localStorage.setItem("isAuth", false);
-  // },[]);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsAuth(true);
+        localStorage.setItem("isAuth", true);
+      } else {
+        setIsAuth(false);
+        localStorage.setItem("isAuth", false);
+      }
+    });
 
-  if (!isAuth && auth.currentUser === null) {
-    return <Login setIsAuth={setIsAuth}></Login>;
+    return () => unsubscribe();
+  }, []);
+
+  if (!isAuth) {
+    return <Login setIsAuth={setIsAuth} />;
   } else {
     return (
       <>
