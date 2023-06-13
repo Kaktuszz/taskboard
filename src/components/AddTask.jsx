@@ -49,12 +49,12 @@ const AddTask = (props) => {
   //     taskPriority: priority === "" ? "non" : priority,
   //     result: false,
   //   });
-    // clear inputs and renew tasks on screen
-    await props.onFetch();
-    setPriority("");
-    setDayTask("");
-    setTaskName("");
-  };
+  //   // clear inputs and renew tasks on screen
+  //   await props.onFetch();
+  //   setPriority("");
+  //   setDayTask("");
+  //   setTaskName("");
+  // };
 
   // handlers for task data
   const priorityHandler = (e) => {
