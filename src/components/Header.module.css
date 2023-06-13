@@ -45,6 +45,13 @@
     background-color: antiquewhite;
 }
 
+.logout{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    margin-left: 10px;
+}
+
 /* .non:hover{
     background-color: rgb(170, 170, 170);
 }
