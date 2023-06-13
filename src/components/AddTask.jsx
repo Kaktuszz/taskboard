@@ -33,22 +33,22 @@ const AddTask = (props) => {
     setTaskName("");
   };
   // task adder
-  const addTaskHandler = async (event) => {
-    event.preventDefault();
-    console.log({
-      gate: formatDate,
-      taskName: taskName,
-      taskPriority: priority,
-      result: false,
-    });
-    // here task goes to DB
-    await database.ref("act_tasks").push({
-      id: Math.random().toString(),
-      gate: formatDate,
-      taskName: taskName,
-      taskPriority: priority === "" ? "non" : priority,
-      result: false,
-    });
+  // const addTaskHandler = async (event) => {
+  //   event.preventDefault();
+  //   console.log({
+  //     gate: formatDate,
+  //     taskName: taskName,
+  //     taskPriority: priority,
+  //     result: false,
+  //   });
+  //   // here task goes to DB
+  //   await database.ref("act_tasks").push({
+  //     id: Math.random().toString(),
+  //     gate: formatDate,
+  //     taskName: taskName,
+  //     taskPriority: priority === "" ? "non" : priority,
+  //     result: false,
+  //   });
     // clear inputs and renew tasks on screen
     await props.onFetch();
     setPriority("");
