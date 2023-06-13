@@ -30,7 +30,7 @@ function App() {
   //   localStorage.setItem("isAuth", false);
   // },[]);
 
-  if (!isAuth && localStorage.getItem("isAuth") === "false") {
+  if (!isAuth) {
     return <Login setIsAuth={setIsAuth}></Login>;
   } else {
     return (
