@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import TaskBoard from "./components/TaskBoard";
 import Login from "./components/Login";
-import { database } from "./components/firebase";
+import { database, auth } from "./components/firebase";
 import "firebase/firestore";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
   //   localStorage.setItem("isAuth", false);
   // },[]);
 
-  if (!isAuth) {
+  if (!isAuth && auth.currentUser === null) {
     return <Login setIsAuth={setIsAuth}></Login>;
   } else {
     return (
