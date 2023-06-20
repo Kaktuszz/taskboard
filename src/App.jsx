@@ -16,14 +16,13 @@ function App() {
 
   const daysShowHandler = (data) => {
     setDaysShow(parseInt(data));
-    // console.log(daysShow);
   };
 
   // very important function for setting tasks and refresh task on screen
   const fetchTask = async () => {
     const response = await tasksCollection.get();
     setTask(response.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    console.log(response.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    // console.log(response.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
   useEffect(() => {
@@ -49,6 +48,8 @@ function App() {
           onFetch={fetchTask}
           callback={daysShowHandler}
           setIsAuth={setIsAuth}
+          tasks={tasks}
+          fetchTask={fetchTask}
         />
         <TaskBoard fetchTask={fetchTask} tasks={tasks} daysShow={daysShow} />
       </>
