@@ -1,11 +1,5 @@
 .headercontainer{
-    /* width: 100%;
-    height: 150px;
-    
-    display: flex;
-    justify-content: center; */
     position:absolute;
-    /* position:sticky; */
     color: rgb(31, 31, 31);
     top: 0;
     left: 0;
@@ -18,12 +12,7 @@
     display: inline-block;
 }
 
-/* .menu{
-
-} */
-
 .menu ul{
-    /* display: inline-block; */
     margin: 3px;
     padding: 0px;
 }
@@ -36,9 +25,6 @@
     transition: 0.3s;
 }
 
-/* .menu li:hover{
-    background-color: aqua;
-} */
 
 .filter{
     height: 75px;
@@ -52,18 +38,27 @@
     margin-left: 10px;
 }
 
-/* .non:hover{
-    background-color: rgb(170, 170, 170);
+
+.allTasks{
+    /* border: 1px solid rgb(31, 31, 31); */
+    height: 200px;
+    text-align: left;
+    overflow: auto;
+    background-color: #c4c4c485;
 }
 
-.low:hover{
-    background-color: rgba(0, 190, 25, 0.596);
-}
+.allTasks::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .allTasks::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .allTasks::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
-.med:hover{
-    background-color: rgb(252, 145, 46);
-}
-
-.hig:hover{
-    background-color: rgba(204, 19, 19, 0.61);
-} */
+  .allTasks::-webkit-scrollbar {
+    width: 3px;
+  }

@@ -44,16 +44,23 @@ const TaskBoard = (props) => {
   const currYear = date.getFullYear();
   const currMonth = date.getMonth() + 1;
   const daysInCurrMonth = getDaysInMonth(currYear, currMonth);
+  // const [dateFlipper, setDateFlipper] = useState(0);
+
+  // const setDateFlipperHandler =()=>{
+  //   setDateFlipper(dateFlipper - props.daysShow);
+  // }
 
   return (
     <div className={props.daysShow > 14 ? classes.maincontainer : classes.wild_main_container}>
       <div className={classes.board}>
+        {/* <button onClick={setDateFlipperHandler}>Prev</button> */}
         {[...Array(props.daysShow)].map((_, index) => {
           const today = new Date(
             currYear,
             currMonth - 1,
             date.getDate() + index
           );
+          // console.log(today.getDate()); ///////////////////////////////////////// remove later
           const day = today.getDay();
           const month = today.getMonth();
             // filter for tasks (search a day, compare day and "gate")
@@ -88,7 +95,7 @@ const TaskBoard = (props) => {
                     : `${today.getMonth() + 2}`
                 }${
                   today.getDate() - daysInCurrMonth < 10
-                    ? `0${today.getDate() - daysInCurrMonth}`
+                    ? Number(`0${today.getDate() - daysInCurrMonth}`)
                     : `${today.getDate() - daysInCurrMonth}`
                 }`;
 

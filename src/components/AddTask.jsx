@@ -8,6 +8,7 @@ import { auth, database } from "./firebase.js";
 const AddTask = (props) => {
   //Додати useReducer!!
   // states for task data
+  const mindate = new Date().toISOString().split("T")[0];
   const [priority, setPriority] = useState("");
   const [taskName, setTaskName] = useState("");
   const [dateTask, setDayTask] = useState("");
@@ -32,30 +33,6 @@ const AddTask = (props) => {
     setDayTask("");
     setTaskName("");
   };
-  // task adder
-  // const addTaskHandler = async (event) => {
-  //   event.preventDefault();
-  //   console.log({
-  //     gate: formatDate,
-  //     taskName: taskName,
-  //     taskPriority: priority,
-  //     result: false,
-  //   });
-  //   // here task goes to DB
-  //   await database.ref("act_tasks").push({
-  //     id: Math.random().toString(),
-  //     gate: formatDate,
-  //     taskName: taskName,
-  //     taskPriority: priority === "" ? "non" : priority,
-  //     result: false,
-  //   });
-  //   // clear inputs and renew tasks on screen
-  //   await props.onFetch();
-  //   setPriority("");
-  //   setDayTask("");
-  //   setTaskName("");
-  // };
-
   // handlers for task data
   const priorityHandler = (e) => {
     setPriority(e.target.value);
@@ -133,7 +110,7 @@ const AddTask = (props) => {
       </ul>
       <Input type="text" value={taskName} onChange={taskHandler} />
       <Button>Add</Button>
-      <input type="date" value={dateTask} onChange={dateHandler} required />
+      <input type="date" value={dateTask} onChange={dateHandler} min={mindate} required />
     </form>
   );
 };
