@@ -3,7 +3,7 @@ import classes from "./Header.module.css";
 import AddTask from "./AddTask";
 import Button from "./UI/Button";
 import Clock from "./Clock";
-import Input from "./UI/Input";
+// import Input from "./UI/Input";
 import TaskCont from "./TaskCont";
 import "firebase/auth";
 import { auth } from "./firebase";
