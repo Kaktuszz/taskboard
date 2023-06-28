@@ -1,6 +1,7 @@
 .cont{
     position: relative;
     height: auto;
+    width: 84%;
     text-align: left;
     border-radius: 5px;
     margin: 0px 7px 7px 7px;
@@ -39,12 +40,20 @@
 
 .butt button{
     background-color: transparent;
-    border: 2px solid red;
+    border: 0px solid red;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 3px;
     /* border: none; */
-    font-size: 10px;
+    /* font-size: 10px; */
     padding: 1px, 1px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    transition: 0.5s;
+    transition: 0.2s;
+}
+
+.butt img{
+    max-height: 15px;
 }
 
 .butt button:hover{

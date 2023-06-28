@@ -3,6 +3,8 @@ import classes from "./TaskCont.module.css";
 import { database } from "./firebase";
 import "firebase/firestore";
 import Button from "./UI/Button";
+import delButton from "./UI/trash.png";
+import editButton from "./UI/edit-button.png";
 
 const TaskCont = (props) => {
   // constants for checkbox, delete/edit task
@@ -76,8 +78,10 @@ const TaskCont = (props) => {
           <div className={`${classes.cont} ${classes.del}`}>
             {props.taskname}
           </div>
-          <Button func={deleteTask}>Yes</Button>
-          <Button func={deteteTaskHandler}>No</Button>
+          <div>
+            <Button func={deleteTask}>Yes</Button>
+            <Button func={deteteTaskHandler}>No</Button>
+          </div>
         </div>
       )}
       {editBox && (
@@ -108,8 +112,10 @@ const TaskCont = (props) => {
               <option value="hig">High</option>
             </select>
           </div>
-          <Button func={editTask}>Edit</Button>
-          <Button func={editTaskWindowHandler}>Cancel</Button>
+          <div>
+            <Button func={editTask}>Edit</Button>
+            <Button func={editTaskWindowHandler}>Cancel</Button>
+          </div>
         </div>
       )}
 
@@ -122,20 +128,21 @@ const TaskCont = (props) => {
             checked={props.result}
           />
           {props.taskname}
+          <br />
           <div className={classes.butt}>
             <button
               type="button"
               title="Delete task"
               onClick={deteteTaskHandler}
             >
-              X
+              <img src={delButton} alt="Delete "/>
             </button>
             <button
               type="button"
-              title="Delete task"
+              title="Edit task"
               onClick={editTaskWindowHandler}
             >
-              Edit
+              <img src={editButton} alt="Edit"/>
             </button>
           </div>
         </>
